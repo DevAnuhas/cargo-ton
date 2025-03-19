@@ -26,7 +26,7 @@ Make sure you have the following installed:
 1. **Clone the Project:**
 
    ```bash
-   git clone https://github.com/DevAnuhas/anuhas-dev-v2
+   git clone https://github.com/DevAnuhas/cargo-ton.git
 
    ```
 
@@ -69,5 +69,3 @@ If you encounter issues while running the project, ensure that:
 - Node.js is correctly installed.
 - You’re in the correct project directory.
 - All dependencies are installed without errors.
-
----
