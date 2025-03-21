@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Star, ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const testimonials = [
 	{
 		id: 1,
 		name: "John Smith",
 		position: "CEO, ABC Corporation",
-		image: "./assets/user.png",
+		image: "",
 		content:
 			"Working with this construction company was a fantastic experience. Their attention to detail and commitment to quality is unmatched. The project was completed on time and within budget.",
 		rating: 5,
@@ -15,7 +21,7 @@ const testimonials = [
 		id: 2,
 		name: "Sarah Johnson",
 		position: "Property Developer",
-		image: "./assets/user.png",
+		image: "user.png",
 		content:
 			"I've worked with many construction firms over the years, but none have impressed me as much as this team. Their professionalism and expertise made our complex project seem effortless.",
 		rating: 5,
@@ -24,7 +30,7 @@ const testimonials = [
 		id: 3,
 		name: "Michael Brown",
 		position: "Homeowner",
-		image: "./assets/user.png",
+		image: "user.png",
 		content:
 			"The renovation of our home exceeded all expectations. The team was courteous, skilled, and kept us informed throughout the entire process. I highly recommend their services.",
 		rating: 4,
@@ -34,27 +40,27 @@ const testimonials = [
 const whyChooseUs = [
 	{
 		id: 1,
-		title: "Experienced Team",
+		title: "Skilled and Dedicated Team",
 		description:
-			"Our team brings decades of combined experience in the construction industry.",
+			"Our professional staff brings years of expertise to every project, ensuring precision and care in handling your logistics requirements.",
 	},
 	{
 		id: 2,
-		title: "Quality Materials",
+		title: "Premium Resources from Reliable Partners",
 		description:
-			"We use only the highest quality materials from trusted suppliers.",
+			"We source top-quality equipment and materials from trusted suppliers to guarantee the safety and security of your shipments.",
 	},
 	{
 		id: 3,
-		title: "On-Time Delivery",
+		title: "On-Time Delivery with Clear Pricing",
 		description:
-			"We pride ourselves on completing projects within the agreed timeframe.",
+			"We prioritize punctuality and transparency, completing every job on schedule while offering straightforward, competitive pricing.",
 	},
 	{
 		id: 4,
-		title: "Transparent Pricing",
+		title: "Your Satisfaction Drives Us",
 		description:
-			"No hidden costs or surprises - we provide clear and detailed quotes.",
+			"At CargoTON, our mission is to exceed your expectations, making customer satisfaction the cornerstone of our service.",
 	},
 ];
 
@@ -84,11 +90,11 @@ export default function TestimonialsSection() {
 								Testimonials
 							</div>
 							<h2 className="text-3xl md:text-4xl font-bold">
-								What Our Clients Say
+								What Our <span className="text-accent">Clients Say</span>
 							</h2>
 						</div>
 
-						<div className="relative bg-white rounded-lg shadow-md p-8 border border-gray-100 min-h-[320px]">
+						<div className="relative bg-muted rounded-lg shadow-md p-8 border min-h-[320px]">
 							{testimonials.map((testimonial, index) => (
 								<div
 									key={testimonial.id}
@@ -101,22 +107,25 @@ export default function TestimonialsSection() {
 									<div className="flex items-center mb-6">
 										<div className="relative h-16 w-16 rounded-full overflow-hidden mr-4">
 											<img
-												src={testimonial.image || "./assets/user.png"}
+												src={`./assets/${testimonial.image}`}
 												alt={testimonial.name}
 												className="object-cover"
+												onError={(e) => (e.target.src = "./assets/user.png")}
 											/>
 										</div>
 										<div>
 											<h4 className="font-bold text-lg">{testimonial.name}</h4>
-											<p className="text-gray-600">{testimonial.position}</p>
+											<p className="text-muted-foreground text-sm">
+												{testimonial.position}
+											</p>
 										</div>
 									</div>
 
-									<div className="flex mb-4">
+									<div className="flex mb-4 space-x-1">
 										{[...Array(5)].map((_, i) => (
 											<Star
 												key={i}
-												className={`h-5 w-5 ${
+												className={`h-4 w-4 ${
 													i < testimonial.rating
 														? "text-yellow-400 fill-yellow-400"
 														: "text-gray-300"
@@ -125,7 +134,7 @@ export default function TestimonialsSection() {
 										))}
 									</div>
 
-									<p className="text-gray-700 italic mb-6">
+									<p className="text-muted-foreground italic mb-6">
 										"{testimonial.content}"
 									</p>
 								</div>
@@ -134,7 +143,7 @@ export default function TestimonialsSection() {
 							<div className="flex justify-between mt-6">
 								<button
 									onClick={prevTestimonial}
-									className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+									className="p-2 rounded-full border hover:bg-background transition-colors"
 									aria-label="Previous testimonial"
 								>
 									<ChevronLeft size={20} />
@@ -147,7 +156,7 @@ export default function TestimonialsSection() {
 											className={`w-3 h-3 rounded-full transition-colors ${
 												index === currentTestimonial
 													? "bg-primary"
-													: "bg-gray-300"
+													: "bg-background"
 											}`}
 											aria-label={`Go to testimonial ${index + 1}`}
 										/>
@@ -155,7 +164,7 @@ export default function TestimonialsSection() {
 								</div>
 								<button
 									onClick={nextTestimonial}
-									className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+									className="p-2 rounded-full border hover:bg-background transition-colors"
 									aria-label="Next testimonial"
 								>
 									<ChevronRight size={20} />
@@ -171,21 +180,28 @@ export default function TestimonialsSection() {
 								Why Choose Us
 							</div>
 							<h2 className="text-3xl md:text-4xl font-bold">
-								The Right Choice for Your Construction Needs
+								The Right Choice for Your{" "}
+								<span className="text-accent">Logistic Needs</span>
 							</h2>
 						</div>
 
-						<div className="space-y-6">
+						<div className="space-y-2">
 							{whyChooseUs.map((item) => (
-								<div key={item.id} className="flex">
-									<div className="mr-4 mt-1">
-										<CheckCircle className="h-6 w-6 text-primary" />
-									</div>
-									<div>
-										<h4 className="font-bold text-lg mb-1">{item.title}</h4>
-										<p className="text-gray-600">{item.description}</p>
-									</div>
-								</div>
+								<Accordion
+									type="single"
+									key={item.id}
+									collapsible
+									className="w-full bg-muted px-8 border border-border"
+								>
+									<AccordionItem value={`item-${item.id}`}>
+										<AccordionTrigger className="text-md">
+											{item.title}
+										</AccordionTrigger>
+										<AccordionContent className="text-muted-foreground">
+											{item.description}
+										</AccordionContent>
+									</AccordionItem>
+								</Accordion>
 							))}
 						</div>
 					</div>
