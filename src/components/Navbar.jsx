@@ -1,152 +1,132 @@
 import { useState } from "react";
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, Clock } from "lucide-react";
-import { Button } from "./ui/button";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { ModeToggle } from "@/components/ui/mode-toggle";
+import { useTheme } from "@/components/ui/theme-provider";
+
+const navItems = [
+	{ name: "HOME", href: "/" },
+	{
+		name: "PAGES",
+		children: {
+			items: [
+				{ name: "About", href: "/about" },
+				{ name: "Projects", href: "/projects" },
+				{ name: "News", href: "/news" },
+				{ name: "Careers", href: "/careers" },
+				{ name: "Contact", href: "/contact" },
+			],
+		},
+	},
+	{ name: "TRACKING", href: "/tracking" },
+	{
+		name: "SERVICES",
+		href: "/services",
+		children: {
+			items: [
+				{
+					name: "Air Freight Services",
+					href: "/services/freight-services",
+				},
+				{ name: "Drone Services", href: "/services/drone-services" },
+			],
+		},
+	},
+	{
+		name: "BLOG",
+		href: "/blog",
+		children: {
+			items: [
+				{ name: "Blog 1", href: "/blog/blog-post-1" },
+				{ name: "Blog 2", href: "/blog/blog-post-2" },
+				{ name: "Blog 3", href: "/blog/blog-post-3" },
+			],
+		},
+	},
+];
 
 export default function Navbar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const { theme } = useTheme();
 
 	return (
-		<header className="w-full bg-white">
+		<header className="w-full bg-background">
 			{/* Main navbar */}
-			<div className="container mx-auto px-4 py-4">
+			<div className="container mx-auto px-4 py-6">
 				<div className="flex justify-between items-center">
 					<a href="/" className="flex gap-2 items-center">
 						<img
-							src="./assets/logo.png"
+							src={
+								theme === "dark"
+									? "./assets/logo-dark-mode.png"
+									: "./assets/logo-light-mode.png"
+							}
 							alt="Company Logo"
-							width={180}
-							height={60}
 							className="h-12 w-auto"
 						/>
-						<div className="text-2xl font-bold">CargoTON</div>
 					</a>
 
 					{/* Desktop Navigation */}
-					<nav className="hidden md:flex items-center space-x-8">
-						<div className="relative group">
-							<button className="flex items-center font-bold text-gray-500 hover:text-primary">
-								<div className="w-1 h-6 bg-accent mr-2"></div>
-								HOME <ChevronDown size={16} className="ml-1" />
-							</button>
-							<div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-								<div className="py-2">
-									<a
-										href="/services/service1"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 1
-									</a>
-									<a
-										href="/services/service2"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 2
-									</a>
-									<a
-										href="/services/service3"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 3
-									</a>
-								</div>
-							</div>
-						</div>
-						<div className="relative group">
-							<button className="flex items-center font-bold text-gray-700 hover:text-primary">
-								PAGES <ChevronDown size={16} className="ml-1" />
-							</button>
-							<div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-								<div className="py-2">
-									<a
-										href="/services/service1"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 1
-									</a>
-									<a
-										href="/services/service2"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 2
-									</a>
-									<a
-										href="/services/service3"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 3
-									</a>
-								</div>
-							</div>
-						</div>
-						<a
-							href="/projects"
-							className="font-bold text-gray-700 hover:text-primary"
-						>
-							TRACKING
-						</a>
-
-						<div className="relative group">
-							<button className="flex items-center font-bold text-gray-700 hover:text-primary">
-								SERVICES <ChevronDown size={16} className="ml-1" />
-							</button>
-							<div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-								<div className="py-2">
-									<a
-										href="/services/service1"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 1
-									</a>
-									<a
-										href="/services/service2"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 2
-									</a>
-									<a
-										href="/services/service3"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 3
-									</a>
-								</div>
-							</div>
-						</div>
-
-						<div className="relative group">
-							<button className="flex items-center font-bold text-gray-700 hover:text-primary">
-								BLOG <ChevronDown size={16} className="ml-1" />
-							</button>
-							<div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-								<div className="py-2">
-									<a
-										href="/services/service1"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 1
-									</a>
-									<a
-										href="/services/service2"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 2
-									</a>
-									<a
-										href="/services/service3"
-										className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-									>
-										Service 3
-									</a>
-								</div>
-							</div>
-						</div>
-						<div className="flex gap-4">
+					<div className="relative flex items-center gap-5">
+						<NavigationMenu className="max-w-screen-xl mx-auto">
+							<span className="w-1 h-5 bg-accent -mr-1"></span>
+							<NavigationMenuList className=" tracking-[2px]">
+								{navItems.map((item) => (
+									<NavigationMenuItem key={item.name} className="relative">
+										{!item.children && (
+											<NavigationMenuLink
+												className="text-md font-medium h-9 px-4"
+												href={item.href}
+											>
+												{item.name}
+											</NavigationMenuLink>
+										)}
+										{item.children && (
+											<>
+												<NavigationMenuTrigger className="text-md font-bold">
+													<NavigationMenuLink
+														href={item.href}
+														className="text-md font-medium h-9 p-0"
+													>
+														{item.name}
+													</NavigationMenuLink>
+												</NavigationMenuTrigger>
+												<NavigationMenuContent>
+													<ul className="grid min-w-[200px] gap-2">
+														{item.children.items.map((child) => (
+															<li key={child.name}>
+																<NavigationMenuLink
+																	href={child.href}
+																	className="text-md font-medium"
+																>
+																	{child.name}
+																</NavigationMenuLink>
+															</li>
+														))}
+													</ul>
+												</NavigationMenuContent>
+											</>
+										)}
+									</NavigationMenuItem>
+								))}
+							</NavigationMenuList>
+						</NavigationMenu>
+						<ModeToggle />
+						<div className="flex gap-5 items-center">
 							<Button size={"lg"}>GET A QUOTE</Button>
 							<Button variant={"secondary"} size={"lg"}>
 								SIGN IN
 							</Button>
 						</div>
-					</nav>
+					</div>
 
 					{/* Mobile menu button */}
 					<button

@@ -1,15 +1,15 @@
 const clients = [
-	{ id: 2, name: "Client 2", logo: "./assets/logo-placeholder.jpg" },
-	{ id: 1, name: "Client 1", logo: "./assets/logo-placeholder.jpg" },
-	{ id: 3, name: "Client 3", logo: "./assets/logo-placeholder.jpg" },
-	{ id: 4, name: "Client 4", logo: "./assets/logo-placeholder.jpg" },
-	{ id: 5, name: "Client 5", logo: "./assets/logo-placeholder.jpg" },
-	{ id: 6, name: "Client 6", logo: "./assets/logo-placeholder.jpg" },
+	{ id: 2, name: "Client 2", logo: "logoipsum-216.svg" },
+	{ id: 1, name: "Client 1", logo: "logoipsum-253.svg" },
+	{ id: 3, name: "Client 3", logo: "logoipsum-325.svg" },
+	{ id: 4, name: "Client 4", logo: "logoipsum-334.svg" },
+	{ id: 5, name: "Client 5", logo: "logoipsum-358.svg" },
+	{ id: 6, name: "Client 6", logo: "logoipsum-364.svg" },
 ];
 
 export default function ClientLogosSection() {
 	return (
-		<section className="py-16 bg-gray-50">
+		<section className="py-16 bg-muted">
 			<div className="container mx-auto px-4">
 				<div className="text-center max-w-3xl mx-auto mb-12">
 					<div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
@@ -20,15 +20,13 @@ export default function ClientLogosSection() {
 					</h2>
 				</div>
 
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16 items-center">
 					{clients.map((client) => (
 						<div key={client.id} className="flex justify-center">
 							<img
-								src={client.logo || "./assets/logo-placeholder.jpg"}
+								src={`./assets/${client.logo}`}
 								alt={client.name}
-								width={160}
-								height={80}
-								className="h-auto w-auto max-h-16 opacity-70 hover:opacity-100 transition-opacity"
+								className="h-auto w-auto max-h-16 grayscale-100 dark:invert-100 opacity-60 hover:opacity-100 transition-opacity"
 							/>
 						</div>
 					))}

@@ -1,49 +1,50 @@
+import { Button } from "@/components/ui/button";
 import { Calendar, User, ArrowRight } from "lucide-react";
 
 const newsItems = [
 	{
 		id: 1,
-		title: "Innovative Construction Techniques for Sustainable Buildings",
+		title: "Optimizing Cargo Logistics with Sustainable Practices",
 		excerpt:
-			"Discover the latest innovations in sustainable construction that are revolutionizing the industry.",
-		image: "/assets/news.jpg",
-		date: "March 15, 2023",
+			"Learn how CargoTON is pioneering eco-friendly logistics solutions to reduce carbon footprints in shipping.",
+		image: "news_1.jpg",
+		date: "March 10, 2025",
 		author: "John Smith",
 		category: "Innovation",
-		slug: "innovative-construction-techniques",
+		slug: "sustainable-cargo-logistics",
 	},
 	{
 		id: 2,
-		title: "How to Choose the Right Materials for Your Construction Project",
+		title: "How to Choose the Right Shipping Partner for Your Cargo",
 		excerpt:
-			"A comprehensive guide to selecting the best materials for different types of construction projects.",
-		image: "/assets/news.jpg",
-		date: "February 28, 2023",
+			"A quick guide to selecting a logistics provider that ensures timely and secure cargo delivery.",
+		image: "news_2.jpg",
+		date: "February 25, 2025",
 		author: "Sarah Johnson",
 		category: "Tips & Advice",
-		slug: "choosing-right-materials",
+		slug: "choosing-shipping-partner",
 	},
 	{
 		id: 3,
-		title: "The Future of Smart Buildings: Technology in Construction",
+		title: "The Future of Smart Logistics: Tech in Cargo Transport",
 		excerpt:
-			"Exploring how smart technology is transforming modern buildings and construction practices.",
-		image: "/assets/news.jpg",
-		date: "January 10, 2023",
+			"Discover how CargoTON uses cutting-edge technology to transform cargo tracking and delivery.",
+		image: "news_3.jpg",
+		date: "January 15, 2025",
 		author: "Michael Brown",
 		category: "Technology",
-		slug: "future-smart-buildings",
+		slug: "future-smart-logistics",
 	},
 	{
 		id: 4,
-		title: "The Future of Smart Buildings: Technology in Construction",
+		title: "How Tech is Revolutionizing Cargo Tracking",
 		excerpt:
-			"Exploring how smart technology is transforming modern buildings and construction practices.",
-		image: "/assets/news.jpg",
-		date: "January 10, 2023",
+			"Explore CargoTON’s use of real-time tech to keep your cargo secure and on track.",
+		image: "news_4.jpg",
+		date: "February 20, 2025",
 		author: "Michael Brown",
 		category: "Technology",
-		slug: "future-smart-buildings",
+		slug: "tech-cargo-tracking",
 	},
 ];
 
@@ -56,11 +57,11 @@ export default function NewsSection() {
 						Latest News
 					</div>
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						Stay Updated with Our News
+						Stay Updated with <span className="text-accent">Our News</span>
 					</h2>
-					<p className="text-gray-600">
+					<p className="text-muted-foreground">
 						Keep up with the latest trends, insights, and updates from the
-						construction industry and our company's latest projects and
+						logistics industry and our company's latest projects and
 						achievements.
 					</p>
 				</div>
@@ -69,16 +70,17 @@ export default function NewsSection() {
 					{newsItems.map((item) => (
 						<div
 							key={item.id}
-							className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+							className="bg-muted rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-Package"
 						>
 							<a
 								href={`/news/${item.slug}`}
-								className="block relative h-48 overflow-hidden"
+								className="relative h-72 overflow-hidden flex items-center justify-center"
 							>
 								<img
-									src={item.image || "/placeholder.svg"}
+									src={`./assets/${item.image}`}
 									alt={item.title}
 									className="object-cover transition-transform hover:scale-105 duration-300"
+									onError={(e) => (e.target.src = "./assets/placeholder.svg")}
 								/>
 								<div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
 									{item.category}
@@ -86,7 +88,7 @@ export default function NewsSection() {
 							</a>
 
 							<div className="p-6">
-								<div className="flex items-center text-sm text-gray-500 mb-3">
+								<div className="flex items-center text-sm text-muted-foreground mb-2">
 									<div className="flex items-center mr-4">
 										<Calendar size={14} className="mr-1" />
 										{item.date}
@@ -106,7 +108,7 @@ export default function NewsSection() {
 									</a>
 								</h3>
 
-								<p className="text-gray-600 mb-4">{item.excerpt}</p>
+								<p className="text-muted-foreground mb-4">{item.excerpt}</p>
 
 								<a
 									href={`/news/${item.slug}`}
@@ -120,12 +122,7 @@ export default function NewsSection() {
 				</div>
 
 				<div className="text-center mt-12">
-					<a
-						href="/news"
-						className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-md transition-colors inline-block"
-					>
-						View All News
-					</a>
+					<Button size={"lg"}>VIEW ALL NEWS</Button>
 				</div>
 			</div>
 		</section>
