@@ -186,14 +186,14 @@ export default function TestimonialsSection() {
 						</div>
 
 						<div className="space-y-2">
-							{whyChooseUs.map((item) => (
-								<Accordion
-									type="single"
-									key={item.id}
-									collapsible
-									className="w-full bg-muted px-8 border border-border"
-								>
-									<AccordionItem value={`item-${item.id}`}>
+							<Accordion
+								type="single"
+								collapsible
+								defaultValue="item-1"
+								className="bg-muted px-8 border border-border"
+							>
+								{whyChooseUs.map((item) => (
+									<AccordionItem key={item.id} value={`item-${item.id}`}>
 										<AccordionTrigger className="text-md">
 											{item.title}
 										</AccordionTrigger>
@@ -201,8 +201,8 @@ export default function TestimonialsSection() {
 											{item.description}
 										</AccordionContent>
 									</AccordionItem>
-								</Accordion>
-							))}
+								))}
+							</Accordion>
 						</div>
 					</div>
 				</div>

@@ -20,13 +20,13 @@ export default function ClientLogosSection() {
 					</h2>
 				</div>
 
-				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16 items-center">
+				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16  items-center">
 					{clients.map((client) => (
-						<div key={client.id} className="flex justify-center">
+						<div key={client.id} className="flex justify-center h-full">
 							<img
 								src={`./assets/${client.logo}`}
 								alt={client.name}
-								className="h-auto w-auto max-h-16 grayscale-100 dark:invert-100 opacity-60 hover:opacity-100 transition-opacity"
+								className="h-16 w-auto max-h-16 grayscale-100 dark:invert-100 opacity-60 hover:opacity-100 transition-opacity"
 							/>
 						</div>
 					))}

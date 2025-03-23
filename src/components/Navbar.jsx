@@ -95,7 +95,7 @@ export default function Navbar() {
 		<header className="fixed z-50 top-0 w-full bg-background">
 			{/* Main navbar */}
 			<div
-				className={`relative max-w-screen-xl mx-auto px-4 py-12 h-12 flex gap-5 justify-between items-center transition-all duration-300 ${
+				className={`relative lg:max-w-screen-xl mx-auto px-4 py-12 h-12 flex gap-5 justify-between items-center transition-all md:transition-none duration-300 ${
 					isMenuOpen ? "bg-popover" : "bg-background"
 				}`}
 			>
@@ -111,7 +111,7 @@ export default function Navbar() {
 				</a>
 
 				{/* Desktop Navigation */}
-				<div className="relative hidden lg:flex items-center gap-4 xl:gap-5">
+				<div className="relative hidden lg:flex items-center gap-5">
 					<NavigationMenu className="mx-auto">
 						<span className="w-1 h-5 bg-accent -mr-1"></span>
 						<NavigationMenuList className="tracking-[2px]">
@@ -156,7 +156,7 @@ export default function Navbar() {
 						</NavigationMenuList>
 					</NavigationMenu>
 					<ModeToggle />
-					<div className="flex  gap-4 xl:gap-5 items-center">
+					<div className="flex gap-5 items-center">
 						<Button size={"lg"}>GET A QUOTE</Button>
 						<Button variant={"secondary"} size={"lg"}>
 							SIGN IN
