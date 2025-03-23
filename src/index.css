@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -79,6 +78,9 @@
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
+	}
+	html {
+		overflow-x: hidden;
 	}
 	body {
 		@apply bg-background text-foreground;
