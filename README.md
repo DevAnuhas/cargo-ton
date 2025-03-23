@@ -2,10 +2,32 @@
 
 **Technologies used:**
 
-- ReactJS
+- React.js
 - Tailwind CSS
 - Shadcn UI
 - Lucide Icons
+
+## Features
+
+- **Responsive Design**  
+  The site adapts seamlessly to all screen sizes—desktops, tablets, and mobiles—for a consistent user experience.
+
+- **Light/Dark Theme Switch**  
+  Users can toggle between light and dark modes, enhancing accessibility and personalizing the interface.
+
+- **Intuitive Navigation Bar**  
+  A responsive nav bar with dropdowns, crafted using Shadcn UI, supports keyboard navigation and ARIA roles for full accessibility.
+
+- **Smooth & Modern UI**  
+  Shadcn UI components deliver a polished, customizable design with fluid animations, paired with Lucide Icons for visual clarity and appeal.
+
+- **Reusable Components**  
+  React.js enables modular buttons, cards, and sliders, streamlining development and ensuring a cohesive look across the site.
+
+- **Performance Optimized**  
+  Leveraging React.js, the site offers fast load times and smooth interactions, critical for logistics users seeking quick access to information.
+
+**Deployed URL:** [https://cargo-ton-logistics.vercel.app](https://cargo-ton-logistics.vercel.app)
 
 ---
 
