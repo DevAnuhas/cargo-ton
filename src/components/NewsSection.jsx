@@ -74,12 +74,12 @@ export default function NewsSection() {
 						>
 							<a
 								href={`/news/${item.slug}`}
-								className="relative h-72 overflow-hidden flex items-center justify-center"
+								className="relative h-48 sm:h-64 md:h-48 lg:h-72 overflow-hidden flex items-center justify-center"
 							>
 								<img
 									src={`./assets/${item.image}`}
 									alt={item.title}
-									className="object-cover transition-transform hover:scale-105 duration-300"
+									className="object-cover h-full w-full transition-transform hover:scale-105 duration-300"
 									onError={(e) => (e.target.src = "./assets/placeholder.svg")}
 								/>
 								<div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">

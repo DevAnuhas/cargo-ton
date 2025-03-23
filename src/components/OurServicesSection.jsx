@@ -49,21 +49,21 @@ export default function OurServicesSection() {
 					</h2>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 					{services.map((service) => (
 						<div
 							key={service.id}
 							className="bg-background flex items-center justify-center shadow-sm hover:shadow-md transition-shadow border border-border"
 						>
-							<div className="flex-1 overflow-hidden flex items-center justify-center">
+							<div className="flex-1 h-full overflow-hidden flex items-center justify-center">
 								<img
 									src={`./assets/${service.image}`}
 									alt={service.title}
-									className="object-cover aspect-square transition-transform hover:scale-105 duration-300"
+									className="object-cover h-full aspect-square transition-transform hover:scale-105 duration-300"
 									onError={(e) => (e.target.src = "./assets/placeholder.svg")}
 								/>
 							</div>
-							<div className="p-8 flex-1">
+							<div className="p-6 flex-1">
 								<h3 className="text-xl font-bold mb-3">{service.title}</h3>
 								<p className="text-muted-foreground mb-6">
 									{service.description}

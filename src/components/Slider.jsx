@@ -55,7 +55,7 @@ const Slider = () => {
 	}, [currentSlide]);
 
 	return (
-		<div className="relative h-[calc(100vh-96px)] w-full overflow-">
+		<div className="relative h-screen w-full overflow-">
 			<div className="relative mx-auto h-full">
 				{sliderData.map((slide, index) => (
 					<div
@@ -67,23 +67,23 @@ const Slider = () => {
 						}`}
 					>
 						<div className="h-full">
-							<div className="h-full w-full flex align items-center">
-								<div className="flex justify-center">
-									<div className="relative z-20">
-										<div className="relative top-1/2 left-1/2 transform -translate-x-[35%] -translate-y-1/2 mx-auto pt-[10%] pb-[20%] pl-4 pr-6 w-full bg-background">
-											<div className="flex align-middle gap-3 py-1 mb-3">
+							<div className="h-full w-full max-w-fit flex mx-auto flex-col md:flex-row -translate-y-12 sm:-translate-y-18 md:translate-y-0">
+								<div className="flex mx-auto">
+									<div className="z-10 mt-24 ">
+										<div className="relative top-1/2 md:left-1/2 sm:transform translate-x-0 md:-translate-x-[35%] md:-translate-y-1/2 -translate-y-[35%] mx-auto md:h-[600px] w-full md:w-[450px] lg:w-[500px] 2xl:w-[650px] py-10 md:py-20 px-8 md:px-4 bg-background">
+											<div className="flex align-middle gap-3 mb-6">
 												<span className="w-1 h-6 bg-accent"></span>
 												<span className="font-bold tracking-[5px]">
 													{slide.subtitle}
 												</span>
 											</div>
-											<h1 className="text-4xl md:text-5xl lg:text-7xl font-normal mb-5 tracking-tight">
+											<h1 className="text-5xl sm:text-6xl lg:text-7xl font-normal mb-3 lg:mb-5 tracking-tight">
 												{slide.titlePrimary}
 											</h1>
-											<h1 className="text-accent text-4xl md:text-5xl lg:text-7xl font-extrabold mb-10">
+											<h1 className="text-accent text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 lg:mb-10">
 												{slide.titleSecondary}
 											</h1>
-											<p className="text-md font-light mb-10 max-w-lg text-foreground">
+											<p className="text-md font-light mb-8 lg:mb-10 max-w-lg text-foreground">
 												{slide.description}
 											</p>
 											<Button variant={"secondary"} size={"lg"}>
@@ -92,18 +92,18 @@ const Slider = () => {
 										</div>
 									</div>
 								</div>
-								<div className="w-[70%] h-full flex ">
+								<div className="hidden sm:flex md:w-auto">
 									<img
 										src={`./assets/${slide.image}`}
 										alt={slide.title}
-										className="h-full w-auto object-cover"
+										className="h-full w-full aspect-[4/3] object-cover"
 									/>
-								</div>
-								<div
-									className="h-full py-2 text-center tracking-widest text-sm font-bold transform rotate-180"
-									style={{ writingMode: "vertical-rl" }}
-								>
-									#CARGOTON LOGISTICS
+									<div
+										className="hidden md:block h-full py-2 text-center tracking-widest text-sm font-bold transform rotate-180"
+										style={{ writingMode: "vertical-rl" }}
+									>
+										#CARGOTON LOGISTICS
+									</div>
 								</div>
 							</div>
 						</div>
