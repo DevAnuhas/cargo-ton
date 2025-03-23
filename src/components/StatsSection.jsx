@@ -1,3 +1,4 @@
+import { useTheme } from "@/components/ui/theme-provider";
 import { Truck, Earth, Package, ThumbsUp } from "lucide-react";
 
 const stats = [
@@ -28,17 +29,29 @@ const stats = [
 ];
 
 export default function StatsSection() {
+	const { theme } = useTheme();
 	return (
-		<section className="py-12 bg-accent text-accent-foreground">
+		<section className="py-12 bg-muted text-muted-foreground">
 			<div className="container mx-auto px-4">
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+				<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-8 lg:gap-16">
 					{stats.map((stat) => (
-						<div key={stat.id} className="text-center">
-							<div className="inline-flex items-center justify-center bg-accent-foreground/10 p-4 rounded-full mb-4">
-								<stat.icon className="h-8 w-8" />
+						<div key={stat.id} className="relative text-center mx-auto">
+							<div
+								className="relative overflow-hidden flex flex-col items-center justify-center p-4 h-32 w-32 lg:h-48 lg:w-48 rounded-full mb-6 bg-muted"
+								style={{
+									boxShadow: `20px 20px 60px ${
+										theme === "dark" ? "#161616" : "#cecece"
+									}, -20px -20px 60px ${
+										theme === "dark" ? "#1e1e1e" : "#ffffff"
+									}`,
+								}}
+							>
+								<div className="text-2xl lg:text-4xl font-extrabold lg:mb-2 text-accent">
+									{stat.value}
+								</div>
+								<div className="text-sm lg:text-lg">{stat.label}</div>
+								<stat.icon className="absolute h-[70%] w-[70%] opacity-10 mx-auto" />
 							</div>
-							<div className="text-4xl font-extrabold mb-2">{stat.value}</div>
-							<div className="text-lg">{stat.label}</div>
 						</div>
 					))}
 				</div>

@@ -70,7 +70,7 @@ export default function NewsSection() {
 					{newsItems.map((item) => (
 						<div
 							key={item.id}
-							className="bg-muted rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-Package"
+							className="bg-muted rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border"
 						>
 							<a
 								href={`/news/${item.slug}`}
