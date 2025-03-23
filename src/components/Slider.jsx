@@ -55,7 +55,7 @@ const Slider = () => {
 	}, [currentSlide]);
 
 	return (
-		<div className="relative mt-24 h-[calc(100vh-100px)] 2xl:container mx-auto overflow-hidden">
+		<div className="relative mt-24 h-[calc(100vh-96px)] 2xl:container mx-auto overflow-hidden">
 			<div className="relative mx-auto h-full">
 				{sliderData.map((slide, index) => (
 					<div
