@@ -1,27 +1,16 @@
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Slider from "./components/Slider";
-import WelcomeSection from "./components/WelcomeSection";
-import OurServicesSection from "./components/OurServicesSection";
-import StatsSection from "./components/StatsSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import ClientLogosSection from "./components/ClientLogosSection";
-import NewsSection from "./components/NewsSection";
-import Footer from "./components/Footer";
+import "@/App.css";
+import { BrowserRouter, Routes, Route } from "react-router";
+import Index from "@/pages/Index";
+import NotFound from "@/pages/NotFound";
 
 function App() {
 	return (
-		<>
-			<Navbar />
-			<Slider />
-			<WelcomeSection />
-			<OurServicesSection />
-			<StatsSection />
-			<TestimonialsSection />
-			<ClientLogosSection />
-			<NewsSection />
-			<Footer />
-		</>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Index />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
