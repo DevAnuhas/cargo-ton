@@ -165,14 +165,17 @@ export default function Navbar() {
 				</div>
 
 				{/* Mobile menu button */}
-				<button
-					className={`lg:hidden relative p-2 text-foreground transition-transform duration-300 ease-in-out transform ${
-						isMenuOpen ? "rotate-90" : "rotate-0"
-					}`}
-					onClick={() => setIsMenuOpen(!isMenuOpen)}
-				>
-					{isMenuOpen ? <X size={32} /> : <Menu size={32} />}
-				</button>
+				<div className="lg:hidden flex gap-8 items-center">
+					{isMenuOpen && <ModeToggle />}
+					<button
+						className={`relative p-2 text-foreground transition-transform duration-300 ease-in-out transform ${
+							isMenuOpen ? "rotate-90" : "rotate-0"
+						}`}
+						onClick={() => setIsMenuOpen(!isMenuOpen)}
+					>
+						{isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+					</button>
+				</div>
 			</div>
 
 			{/* Mobile Menu Overlay */}
@@ -189,7 +192,7 @@ export default function Navbar() {
 							<AccordionItem
 								key={index}
 								value={item.name}
-								className="py-4 transition-all duration-300 ease"
+								className="py-4 transition-all duration-500 ease"
 								style={{
 									transitionDelay: `${index * 100}ms`,
 									transform: isMenuOpen ? "translateX(0)" : "translateX(50px)",
@@ -198,14 +201,14 @@ export default function Navbar() {
 							>
 								{item.children ? (
 									<>
-										<AccordionTrigger className="justify-between text-md py-0">
+										<AccordionTrigger className="justify-between text-md py-0 transition-none">
 											<div className="flex items-center">
 												{(item.href && <a href={item.href}>{item.name}</a>) ||
 													item.name}
 											</div>
 										</AccordionTrigger>
 										<AccordionContent>
-											<div className="ml-7 mt-4 flex flex-col space-y-2 text-lg">
+											<div className="ml-7 mt-4 flex flex-col space-y-2 text-lg transition-none">
 												{item.children?.items.map((child, childIndex) => (
 													<a
 														key={childIndex}
@@ -219,7 +222,7 @@ export default function Navbar() {
 										</AccordionContent>
 									</>
 								) : (
-									<a key={index} href={item.href}>
+									<a key={index} href={item.href} className="transition-none">
 										{item.name}
 									</a>
 								)}
