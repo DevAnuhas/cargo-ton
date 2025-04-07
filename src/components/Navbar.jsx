@@ -92,7 +92,7 @@ export default function Navbar() {
 	}, [isMenuOpen]);
 
 	return (
-		<header className="fixed z-50 top-0 w-full bg-background">
+		<header className="fixed z-50 top-0 w-full bg-background border-b">
 			{/* Main navbar */}
 			<div
 				className={`relative lg:max-w-screen-xl mx-auto px-4 py-12 h-12 flex gap-5 justify-between items-center transition-all md:transition-none duration-300 ${
